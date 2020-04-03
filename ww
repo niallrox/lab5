@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routecollection>
+    <route>
+        <id>23</id>
+        <name>nn</name>
+        <coordinates><x>66</x><y>100</y></coordinates>
+        <locationfrom><x>7.9</x><y>7.99</y><z>53</z><name>asd</name></locationfrom>
+        <locationto><x>7.999</x><y>7.9999</y><z>54</z><name>dfs</name></locationto>
+        <distance>42</distance>
+    </route>
+    <route>
+        <id>55</id>
+        <name>zz</name>
+        <coordinates><x>46</x><y>150</y></coordinates>
+        <locationfrom><x>7.99999</x><y>7.999999</y><z>3</z><name>ad</name></locationfrom>
+        <locationto><x>7.9999999</x><y>7.999999767676767676767676767676767699</y><z>5</z><name>ds</name></locationto>
+        <distance>32</distance>
+    </route>
+    <route>
+        <id>33</id>
+        <name>nn</name>
+        <coordinates><x>66</x><y>100</y></coordinates>
+        <locationfrom><x>7.99999998</x><y>7.967999999999</y><z>53</z><name>asd</name></locationfrom>
+        <locationto><x>7.999999967</x><y>7.9999999999999999</y><z>54</z><name>dfs</name></locationto>
+        <distance>42</distance>
+    </route>
+
+</routecollection>
