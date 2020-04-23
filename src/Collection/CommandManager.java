@@ -1,4 +1,5 @@
 package Collection;
+
 import Ex.IncorrectValue;
 import Ex.NullValue;
 import Foundation.Coordinates;
@@ -14,8 +15,10 @@ import java.util.*;
 /**
  * Класс в котором описаны комманды
  */
+
 public class CommandManager {
-    public static RouteCollection routeCollection = new RouteCollection();
+    long id = 1;
+    public RouteCollection routeCollection = new RouteCollection();
     int ik = 0;
 
     public CommandManager(RouteCollection routeCollection) {
@@ -96,11 +99,10 @@ public class CommandManager {
      */
     public Route readElement(InputInterface command) throws IncorrectValue, NullValue {
         Route route;
-        int id = (int) ((Math.random() * 1000) + 1);
-        for (int i = 0; i < routeCollection.getCollection().size(); i++) {
-            if (routeCollection.getIds()[i] == id) {
-                id = (int) ((Math.random() * 1000) + 1);
-                i = -1;
+        for (int i=0;i<routeCollection.getCollection().size();i++){
+            if (id==routeCollection.getCollection().get(i).getId()) {
+                id++;
+                i=-1;
             }
         }
         String name;
@@ -684,9 +686,9 @@ public class CommandManager {
                     } catch (ArrayIndexOutOfBoundsException e) {
                         System.out.println("Отсутствует аргумент");
                     } catch (SAXException e) {
-                        e.printStackTrace();
+                        System.out.println("Сакс Эксепшн");
                     } catch (ParserConfigurationException e) {
-                        e.printStackTrace();
+                        System.out.println("Ошибка парсинга");
                     }
                     System.out.println();
                 }

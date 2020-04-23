@@ -5,7 +5,6 @@ import Ex.NoArgument;
 import Ex.NullValue;
 import Input.InputInterface;
 import org.xml.sax.SAXException;
-
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.FileNotFoundException;

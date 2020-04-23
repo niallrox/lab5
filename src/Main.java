@@ -1,16 +1,25 @@
+import Foundation.Route;
+
 import javax.xml.bind.JAXBException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class Main {
     private static File file = null;
     public static Asked asked = new Asked();
+    FileInputStream fileInputStream;
+
+    public static List<Route> routes = new LinkedList<>();
+    public static Comparator<Route> comparator = Comparator.comparing(obj ->obj.getDistance());
     private static boolean k;
     public static void main(String[] args) throws JAXBException, IOException {
+        Collections.sort(routes, comparator);
+
         try {
-             file = new File(System.getenv("hleb"));
+             file = new File("ww");
         } catch (NullPointerException e){
             System.out.println("Создайте переменную окружения(hleb=\"/home/s286535/ww\"\n" +
                     "export hleb)");
@@ -37,8 +46,12 @@ public class Main {
             });
             asked.app(file);
         } catch (NoSuchElementException e) {
-        } catch (NullPointerException e){}
-          catch (FileNotFoundException e){}
+        } catch (NullPointerException e){
+            System.out.println("Файла не существует");
+        }
+          catch (FileNotFoundException e){
+              System.out.println("Файл не найден");
+          }
     }
 }
 

@@ -17,6 +17,11 @@ public class RouteCollection {
     public Route getFirst() {
         return route.getFirst();
     }
+    public static String removeLast(String s) {
+        return (s == null || s.length() == 0)
+                ? null
+                : (s.substring(0, s.length() - 1));
+    }
 
     public Long[] getIds() {
         Long[] id = new Long[route.size()];

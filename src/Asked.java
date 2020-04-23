@@ -3,7 +3,12 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 import Collection.*;
 import Ex.IncorrectValue;
@@ -22,8 +27,8 @@ import org.xml.sax.SAXException;
  */
 public class Asked {
     public static RouteCollection routeCollection = new RouteCollection();
-
     public static void app(File file) throws JAXBException, IOException {
+
         try {
             Route route;
             int id;
