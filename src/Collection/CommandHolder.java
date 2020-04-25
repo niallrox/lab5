@@ -10,10 +10,12 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+
 /**
  * Класс который вызывает методы у CommandManager
  */
 public class CommandHolder {
+
 
     public CommandHolder(RouteCollection routeCollection) {
         this.routeCollection = routeCollection;
@@ -25,7 +27,7 @@ public class CommandHolder {
     private String[] Command;
     private CommandReader reader = new CommandReader();
 
-    public void CommandHandler(CommandManager commandmanager) {
+    public void CommandHolder(CommandManager commandmanager) {
         this.commandmanager = commandmanager;
     }
 

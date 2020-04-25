@@ -553,11 +553,11 @@ public class CommandManager {
                                 show();
                                 break;
                             case "add":
-                                int id = (int) ((Math.random() * 1000) + 1);
-                                for (int i = 0; i < routeCollection.getCollection().size(); i++) {
-                                    if (routeCollection.getIds()[i] == id) {
-                                        id = (int) ((Math.random() * 1000) + 1);
-                                        i = -1;
+                                int id =1;
+                                for (int i=0;i<routeCollection.getCollection().size();i++){
+                                    if (id==routeCollection.getCollection().get(i).getId()) {
+                                        id++;
+                                        i=-1;
                                     }
                                 }
                                 String[] arr = new String[12];
@@ -613,10 +613,9 @@ public class CommandManager {
                                 break;
                             case "execute_script":
                                 ik++;
-                                if (ik <= 3) {
+                                if (ik < 3) {
                                     executeScript(finalUserCommand[1]);
                                 } else {
-                                    ik = 0;
                                     System.out.println("Ограничение переполнения стека");
                                 }
                                 break;
