@@ -10,21 +10,25 @@ public class Route implements Comparable<Route> {
     private Location from; //Поле может быть null
     private Location to; //Поле не может быть null
     private Long distance; //Поле не может быть null, Значение поля должно быть больше 1
-    public Route(long id, String name, Coordinates coordinates, Location from, Location to, Long distance){
-        this.id= id ;
-        this.name=name;
-        this.coordinates=coordinates;
-        this.creationDate=LocalDate.now();
-        this.from=from;
-        this.to=to;
-        this.distance=distance;
+
+    public Route(long id, String name, Coordinates coordinates, Location from, Location to, Long distance) {
+        this.id = id;
+        this.name = name;
+        this.coordinates = coordinates;
+        this.creationDate = LocalDate.now();
+        this.from = from;
+        this.to = to;
+        this.distance = distance;
     }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public int compareTo(Route route) {
         if (this.distance == route.distance) {
             return 0;

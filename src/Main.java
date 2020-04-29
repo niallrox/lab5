@@ -1,6 +1,4 @@
-import Foundation.Coordinates;
-import Foundation.Location;
-import Foundation.Route;
+import org.xml.sax.SAXParseException;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;
@@ -11,36 +9,29 @@ import java.util.*;
 public class Main {
     private static File file = null;
     public static Asked asked = new Asked();
-    public static List<Route> routes = new LinkedList<>();
-    public static Comparator<Route> comparator = Comparator.comparing(obj ->obj.getDistance());
-    private static boolean k;
-    public static void main(String[] args) throws JAXBException, IOException {
-        routes.add(new Route(23,"23",new Coordinates(23,23),new Location(23,23,23,"s"), new Location(23,23,23,"s"), (long) 23));
-        routes.add(new Route(23,"23",new Coordinates(23,23),new Location(23,23,23,"s"), new Location(23,23,23,"s"), (long) 33));
-        routes.add(new Route(23,"23",new Coordinates(23,23),new Location(23,23,23,"s"), new Location(23,23,23,"s"), (long) 11));
-        Collections.sort(routes, comparator);
-        routes.forEach((xuy)->System.out.println(xuy));
+
+    public static void main(String[] args) throws JAXBException, IOException, SAXParseException {
 
         try {
-             file = new File(System.getenv("hleb"));
-        } catch (NullPointerException e){
+            file = new File("ww");
+        } catch (NullPointerException e) {
             System.out.println("Создайте переменную окружения(hleb=\"/home/s286535/ww\"\n" +
                     "export hleb)");
         }
         try {
             if (!file.exists()) throw new FileNotFoundException();
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("Файла по указанному пути не существует");
-            if (!k) System.exit(1);
-            else return;
-        } catch (NullPointerException e){}
+            if (false) System.exit(1);
+        } catch (NullPointerException e) {
+        }
         try {
             if (!file.canRead() || !file.canWrite()) throw new SecurityException();
-        } catch (SecurityException se){
+        } catch (SecurityException se) {
             System.out.println("Файл защищен от чтения и/или записи. Для программы нужны оба разрешения");
-            if (!k) System.exit(1);
-            else return;
-        } catch (NullPointerException e){}
+            if (false) System.exit(1);
+        } catch (NullPointerException e) {
+        }
         try {
             Runtime.getRuntime().addShutdownHook(new Thread() {
                 public void run() {
@@ -49,12 +40,12 @@ public class Main {
             });
             asked.app(file);
         } catch (NoSuchElementException e) {
-        } catch (NullPointerException e){
-            System.out.println("Файла не существует");
+        } catch (NullPointerException e) {
+            System.out.println("Ошибка в файле, введите все данные");
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            System.out.println("Файл не найден");
         }
-          catch (FileNotFoundException e){
-              System.out.println("Файл не найден");
-          }
     }
 }
 

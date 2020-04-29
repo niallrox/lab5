@@ -1,9 +1,2 @@
-execute_script kk
-execute_script kk
-execute_script kk
-execute_script kk
-execute_script kk
-execute_script kk
-execute_script kk
-execute_script kk
-execute_script kk
+add
+23

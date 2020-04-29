@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class FileInput implements InputInterface {
     public FileInput(String fileName) throws FileNotFoundException {
 
-        String file =  fileName;
+        String file = fileName;
         this.in = new Scanner(new File(file));
     }
 
@@ -34,10 +34,12 @@ public class FileInput implements InputInterface {
 
 
     }
+
     @Override
     public void output(String message) {
         System.out.println(message);
     }
+
     @Override
     public Float getNextFloatInput() {
         return in.nextFloat();

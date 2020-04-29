@@ -7,6 +7,7 @@ import java.util.Scanner;
  */
 public class TextInput implements InputInterface {
     private String currentInput;
+
     @Override
     public String getNextInput() {
         Scanner sc = new Scanner(System.in);

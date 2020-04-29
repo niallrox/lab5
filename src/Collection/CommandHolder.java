@@ -5,8 +5,10 @@ import Ex.NoArgument;
 import Ex.NullValue;
 import Input.InputInterface;
 import org.xml.sax.SAXException;
+
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -33,6 +35,7 @@ public class CommandHolder {
 
     /**
      * С помошью класса CommandReader принимимает команды и вызвает их у CommandManager
+     *
      * @param inputCommand
      * @throws JAXBException
      * @throws IOException
@@ -90,11 +93,7 @@ public class CommandHolder {
                 System.exit(0);
                 break;
             case "save":
-                try {
-                    commandmanager.save();
-                } catch (Exception s) {
-                    System.out.println("Не сохраняется" + s.getMessage());
-                }
+                commandmanager.save();
                 break;
             case "execute_script":
                 try {

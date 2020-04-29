@@ -5,11 +5,12 @@ public class Location {
     private double y;
     private int z;
     private String name; //Поле не может быть null
-    public Location(float x, double y, int z, String name){
-        this.x=x;
-        this.y=y;
-        this.z=z;
-        this.name=name;
+
+    public Location(float x, double y, int z, String name) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.name = name;
     }
 
     public double getY() {
@@ -27,6 +28,7 @@ public class Location {
     public int getZ() {
         return z;
     }
+
     @Override
     public String toString() {
         return "{" +

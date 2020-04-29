@@ -1,6 +1,7 @@
 package Collection;
 
 import Foundation.Route;
+
 import java.util.*;
 
 /**
@@ -17,6 +18,7 @@ public class RouteCollection {
     public Route getFirst() {
         return route.getFirst();
     }
+
     public static String removeLast(String s) {
         return (s == null || s.length() == 0)
                 ? null

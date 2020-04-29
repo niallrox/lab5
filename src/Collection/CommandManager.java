@@ -7,6 +7,7 @@ import Foundation.Location;
 import Foundation.Route;
 import Input.InputInterface;
 import org.xml.sax.SAXException;
+
 import javax.xml.bind.JAXBException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
@@ -92,6 +93,7 @@ public class CommandManager {
 
     /**
      * Метод считывает элемент и заносит параметры, создавая тем самым объект
+     *
      * @param command
      * @return
      * @throws IncorrectValue
@@ -99,10 +101,10 @@ public class CommandManager {
      */
     public Route readElement(InputInterface command) throws IncorrectValue, NullValue {
         Route route;
-        for (int i=0;i<routeCollection.getCollection().size();i++){
-            if (id==routeCollection.getCollection().get(i).getId()) {
+        for (int i = 0; i < routeCollection.getCollection().size(); i++) {
+            if (id == routeCollection.getCollection().get(i).getId()) {
                 id++;
-                i=-1;
+                i = -1;
             }
         }
         String name;
@@ -298,6 +300,7 @@ public class CommandManager {
 
     /**
      * Удаляет элемент из коллекции по его id
+     *
      * @param id
      */
     public void remove(int id) {
@@ -335,6 +338,7 @@ public class CommandManager {
 
     /**
      * Добавляет новый элемент в коллекцию
+     *
      * @param c
      * @throws IncorrectValue
      * @throws NullValue
@@ -346,6 +350,7 @@ public class CommandManager {
 
     /**
      * Обновляет значение элемента коллекции, id которого равен заданному
+     *
      * @param id
      * @param c
      * @throws IncorrectValue
@@ -381,6 +386,7 @@ public class CommandManager {
 
     /**
      * Сохраняет коллекцию в файл
+     *
      * @throws IOException
      * @throws ParserConfigurationException
      * @throws SAXException
@@ -403,12 +409,16 @@ public class CommandManager {
 
             String cont = "</routecollection>";
             writer.write(cont);
+        } catch (Exception s) {
+            System.out.println("Не сохраняется " + s.getMessage());
         }
-        System.out.println("Коллекция сохранена");
+
+        if (outfile.canWrite() && outfile.canRead()) System.out.println("Коллекция сохранена");
     }
 
     /**
      * удаляет из коллекции все элементы, меньшие, чем заданный
+     *
      * @param c
      * @throws NullValue
      * @throws IncorrectValue
@@ -442,6 +452,7 @@ public class CommandManager {
 
     /**
      * добавляет новый элемент в коллекцию, если его значение превышает значение наибольшего элемента этой коллекции
+     *
      * @param c
      * @throws IncorrectValue
      * @throws NullValue
@@ -526,11 +537,12 @@ public class CommandManager {
 
     /**
      * Считывает и исполняет скрипт из указанного файла
+     *
      * @param fileName
      * @throws IOException
      * @throws JAXBException
      */
-    public void executeScript(String fileName) throws IOException, JAXBException {
+    public void executeScript(String fileName) throws IOException, JAXBException, NoSuchElementException {
         String userCommand;
         String[] finalUserCommand;
         try {
@@ -553,22 +565,17 @@ public class CommandManager {
                                 show();
                                 break;
                             case "add":
-                                int id =1;
-                                for (int i=0;i<routeCollection.getCollection().size();i++){
-                                    if (id==routeCollection.getCollection().get(i).getId()) {
+                                int id = 1;
+                                for (int i = 0; i < routeCollection.getCollection().size(); i++) {
+                                    if (id == routeCollection.getCollection().get(i).getId()) {
                                         id++;
-                                        i=-1;
+                                        i = -1;
                                     }
                                 }
                                 String[] arr = new String[12];
                                 for (int i = 0; i < arr.length; i++) {
                                     userCommand = commandReader.nextLine().toLowerCase();
                                     arr[i] = userCommand;
-                                }
-                                for (int i = 0; i < arr.length; i++) {
-                                    if (arr[i]==null){
-                                        System.out.println("Введено недостаточно данных");
-                                        break;}
                                 }
                                 Route route = new Route(id, arr[0], new Coordinates(Integer.parseInt(arr[1]), Integer.parseInt(arr[2])), new Location(Float.parseFloat(arr[3]), Double.parseDouble(arr[4]), Integer.parseInt(arr[5]), arr[6]), new Location(Float.parseFloat(arr[7]), Double.parseDouble(arr[8]), Integer.parseInt(arr[9]), arr[10]), Long.parseLong(arr[11]));
                                 routeCollection.getCollection().add(route);
@@ -688,8 +695,9 @@ public class CommandManager {
                         System.out.println("Сакс Эксепшн");
                     } catch (ParserConfigurationException e) {
                         System.out.println("Ошибка парсинга");
+                    } catch (NoSuchElementException e) {
+                        System.out.println("Недостаточно введенных данных");
                     }
-                    System.out.println();
                 }
             }
         } catch (FileNotFoundException e) {
